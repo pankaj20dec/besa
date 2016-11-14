@@ -1,0 +1,303 @@
+/*
+Theme Name: Besa
+Theme URI: http://builtbyblank.com
+Description: A responsive theme based on the Bootstrap framework.
+Version: 1
+Author: Saurav Bisht
+Author URI: http://builtbyblank.com
+Tags: flexible-width, custom-menu, One Page , theme-options
+License: GNU General Public License v2.0 & Apache License 2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/licenses/LICENSE-2.0
+*/
+
+body{background:#faf1dd; padding-top:200px;font-family:'proxima_novalight', 'Montserrat', sans-serif; font-size:13px; line-height:20px;letter-spacing:0.1em;color:#000;}
+p{margin:0 0 19px 0;}
+.container{max-width:1330px;width:auto;}
+#content{padding:0;}
+	a{
+		color: #000000;
+	}
+	a:hover{
+		color: #000000
+	}
+	a:active{
+		color: #000000
+	}
+	a:visited{
+		color: #000000
+	}
+	a:focus{
+		color: #000000
+	}
+	ul{list-style:none;}
+/*----top social links--*/
+.top-social{height:50px; background:#fff;}
+.top-social .container{ position: relative;}
+.header-social-icons{
+	position: absolute;
+	top: 18px;
+	right: 15px;
+}
+.header-social-icons li{
+	display: inline-block;
+}
+.header-social-icons li a span{
+	font-size: 18px;
+}
+/* .top-social ul{padding:0; margin:20px 0 0 0;}
+.top-social ul li:last-child{padding-right:0;}
+.top-social a{background:url(images/social-links.jpg) no-repeat;width:16px; height:15px;text-indent:-99999px; display:block; text-align:left;}
+.top-social .insta-link{}
+.top-social .facebook-link{width:7px; background-position:-26px 0;}
+.top-social .twitter-link{width:18px; background-position:-43px 0;}
+ */
+ 
+/*---navbar--*/
+.navbar-default{background:none; border:0 none;margin-bottom:0;}
+
+/*--navigation-fluid--*/
+.navigation-fluid{background:#faf1dd;}
+.navigation-fluid .navbar-brand{float:right;padding:0;margin:39px 0 50px;height:auto;}
+.navigation-fluid .navbar-nav{float:none; margin:0 auto;text-align:center; }
+.navigation-fluid .navbar-nav > li{float:none; display:inline-block; margin:0 -3px;background:#fff;}
+.navigation-fluid .navbar-nav > li:first-child{padding-left:21px;}
+.navigation-fluid .navbar-nav > li:last-child{padding-right:21px;}
+.navbar-nav li a{font-family:'proxima_novalight', 'Montserrat', sans-serif;font-size:16px;text-transform:uppercase; line-height:20px; letter-spacing:0.045em;}
+.navbar-nav > li > a{padding:7px 9px;position:relative;}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+		background:none;color:#000;
+}
+.navbar-default .navbar-nav > .active > a:hover:before{content:"";width:100%;border:0 none; border-bottom:1px solid #000; position:absolute; top:50%;left:50%;
+	transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);}
+/*--jumbotron--*/
+.container .jumbotron, .container-fluid .jumbotron{background:#faf1dd; padding:34px 0 0 0;overflow:hidden;border-radius:0;margin-bottom:0;}
+#main .jumbotron img{margin:0 auto;display:block;}
+#main .jumbotron h1{font-size:30px; line-height:30px;font-family: 'bebas_neueregular'; max-width:635px; margin-top:-26px;}
+#main .jumbotron .page-header{margin:0 auto; max-width:1330px;border:0 none;padding:0 15px;}
+
+/*--scrollpage--*/
+.scrollpage h2{margin-top:0;font-family: 'bebas_neueregular';font-size:30px; line-height:30px;color:#000;margin-bottom:26px;}
+
+/*--mission--*/
+#mission{background:url(images/mission-bg.jpg) no-repeat; background-size:cover;padding:83px 0 77px 0;}
+.body-text{background:rgba(255,255,255,0.7);padding:30px 15.47% 20px;letter-spacing:0.085em;display:table;color:#4d5052;max-width:646px;margin:0 auto;}
+
+/*--portfolio--*/
+#portfolio{padding:34px 0 0 0;}
+.portfolio-gallery{padding-top:31px;clear:both;}
+.portfolio-container{max-width:1079px; margin:0 auto;}
+.portfolio-gallery ul{list-style:none;margin:0; padding:0;}
+.portfolio-gallery ul.row{margin:0 -5px;}
+.portfolio-gallery ul li{float:left;padding:5px;width:33.33%;}
+.portfolio-gallery .item-content{position:relative; overflow:hidden;}
+.portfolio-gallery .item-content .item-description{position:absolute; bottom:25px; left:0;}
+.portfolio-gallery .item-description{background:#fff;padding:10px;width:90.96%;}
+.portfolio-gallery .item-description h3{font-size:18px; line-height:20px;font-family: 'bebas_neueregular';margin:0;}
+.portfolio-gallery .item-description p{margin:0;color:#4d5052; font-size: 13px;}
+
+.portfolio-gallery .item-description{transform:translateY(200%);-webkit-transform:translateY(200%);transition:0.2s linear;-webkit-transition:0.2s linear;}
+.portfolio-gallery .item-content:hover .item-description{transform:translateY(0);-webkit-transform:translateY(0);transition:0.2s linear;-webkit-transition:0.2s linear;}
+
+/*--get a quote--*/
+::-webkit-input-placeholder {opacity:1;}
+:-moz-placeholder { /* Firefox 18- */
+   opacity:1;}
+::-moz-placeholder {  /* Firefox 19+ */
+   opacity:1;}
+:-ms-input-placeholder {  
+   opacity:1;}
+#get-a-quote,#contact{clear:both;padding:34px 0 34px 0; overflow:hidden;}  
+#get-a-quote .body-text,#contact .body-text{padding-left:8.82%;padding-right:8.82%;}
+#get-a-quote .body-text > p, #contact .body-text > p{padding-left:8.82%;padding-right:8.82%;margin-bottom: 25px;}
+.wpcf7-form .wpcf7-form-control-wrap{display:block;}
+.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control{width:100%;font-family: 'bebas_neueregular';font-size:14px; padding:7px;border:0 none;background:#e1e1e1;color:#000;letter-spacing: 0.1em;}
+.wpcf7-form .wpcf7-textarea{height:166px;}
+.wpcf7-form .button-area .wpcf7-submit{font-family: 'bebas_neueregular';font-size:14px;color:#000;letter-spacing: 0.1em; border:0 none; padding:0;background:none;}
+span.wpcf7-not-valid-tip {position: absolute; bottom: 0; transform: translateY(100%);-webkit-transform: translateY(100%);}
+.wpcf7-form p{
+	margin-bottom: 10px;
+}
+.button-area {
+    text-align: right;
+}
+/*--testimonials--*/
+#testimonials{background:url(images/testimonials-bg.jpg) no-repeat; background-size:cover; padding:84px 0;clear:both;}
+.testimonial-container{background:rgba(255,255,255,0.7);max-width:1079px; margin:0 auto; padding:34px 0;overflow:hidden;}
+.testimonial-container h2{text-align:center;}
+.testimonial-container .testi-list{padding:0; margin:0 auto;max-width:884px;}
+.testimonial-container .testi-list li{list-style:none;float:left;width:50%;margin-bottom:50px;}
+.testimonial-container .testi-list .testi-content{font-family: 'proxima_novabold',proxima_novalight;font-size:13px; line-height:20px;text-align:center;
+	max-width:409px; margin:0 auto;}
+.testimonial-container .testi-list .testi-content p{margin-bottom:0;}
+.testimonial-container .testi-list .testi-author{text-transform:uppercase; font-family:bebas_neueregular;font-size:16px; line-height:20px;}
+.testimonial-container .testi-list .testi-content blockquote{font-family: 'proxima_novabold',proxima_novalight;font-size:13px; line-height:20px;text-align:center;margin-bottom:0;border:0 none; padding:0;}
+.testimonial-container .testi-list .testi-content blockquote:before{content: open-quote;}
+.testimonial-container .testi-list .testi-content blockquote:after{content: close-quote;}
+.testi-content p.lead{
+	font-size:13px;
+}
+/********** Blog section ********/
+.link-button{
+	font-family: "bebas_neueregular";
+	font-size: 16px;
+	letter-spacing: 0.1em;
+	line-height: 1;
+	color: #000000;
+	text-align: center;
+	display: inline-block;
+	margin-top: 36px;
+}
+#blog{
+	padding-top: 34px;
+}
+.centered{
+	float: none;
+	margin: 0 auto;
+}
+.blog-title-container{
+	background: #ffffff;
+	padding: 30px 100px;
+	margin-bottom: 16px;
+}
+.blog-title-container h2{
+	text-align: center;
+}
+.blog-image{
+	position: relative;
+	overflow: hidden;
+}
+.blog-image .blog-details {
+    background: #fff none repeat scroll 0 0;
+    margin: 0;
+    padding: 10px;
+    width: 50%;
+	position: absolute;
+	bottom: 21px;
+	left: 0;
+	transform: translateY(200%);
+	transition: all 0.2s linear 0s;
+}
+.blog-image .blog-details h3,.lb-caption > h3{
+	font-family: "bebas_neueregular";
+	font-size: 18px;
+	margin: 0 0 5px 0;
+}
+.blog-image .blog-details p{
+	margin: 0;
+}
+.blog-image:hover .blog-details{
+	transform: translateY(0%);
+}
+.blog-container {
+    padding: 22px 0;
+}
+.blog-container.odd .col-md-6:nth-of-type(1){
+	padding-right: 5px;
+}
+.blog-container.odd .col-md-6:nth-of-type(2){
+	padding-left: 5px;
+}
+.blog-container.even .col-md-6:nth-of-type(1){
+	padding-right: 5px;
+}
+.blog-container.even .col-md-6:nth-of-type(2){
+	padding-left: 5px;
+}
+.blog-descripton{
+	background: #ffffff;
+	padding: 30px 100px 26px;
+	font-size: 16px;
+	line-height: 1.875;
+	min-height: 406px;
+	text-align: center;
+}
+.blog-content {
+    height: 290px;
+    overflow: hidden;
+}
+.more-posts{
+	text-align: center;
+}
+.more-posts .link-button{
+	margin: 10px 0 0;
+}
+.lb-details {
+    left: 10px;
+    position: absolute;
+    top: 12px;
+}
+.lb-caption {
+    background: #fff none repeat scroll 0 0;
+    color: #000;
+    display: block !important;
+	padding: 10px 65px 10px 10px;
+	text-align: left;
+}
+.lb-caption > p{
+	margin: 10px 0 5px;
+}
+
+/************** Footer *************/
+#main article{
+	margin: 0;
+}
+.instafeeds{
+	padding-bottom: 30px;
+}
+.footer-nav-container{
+	background: #fff;
+	text-align: center;
+}
+.footer-nav-container .container{
+	position: relative;
+}
+.footer-nav li{
+	display: inline-block;
+}
+.footer-nav li a {
+    font-family: "proxima_novalight","Montserrat",sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.045em;
+    line-height: 20px;
+    text-transform: uppercase;
+	padding: 15px 15px;
+}
+.footer-nav > .menu-item  > a,.footer-nav > .menu-item  > a:hover, .navbar-nav > .menu-item  > a:focus{
+		background:none;color:#000;
+}
+.footer-nav > .menu-item  > a:hover:before{
+	content:"";width:100%;border:0 none; border-bottom:1px solid #000; position:absolute; top:50%;left:50%;
+	transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);
+}
+.social-icons {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.footer-social {
+    padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 1;
+}
+.footer-social li{
+	display: inline-block;
+}
+.footer-social li a span{
+	font-size: 18px;
+}
+.credits{
+	clear: both;
+	line-height: 80px;
+	text-align: center;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+.credits .copyright{
+	padding-right: 20px; 
+}
+
+@media screen and (max-width: 1329px) {
+	#main .jumbotron img,.portfolio-container,.testimonial-container{max-width:81.127%;}
+}
