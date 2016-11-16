@@ -37,7 +37,47 @@
 		<!-- remove this for production -->
 
 		<script src="//localhost:35729/livereload.js"></script>
+	    <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+		<script type="text/javascript">
+			if($("ul.page-numbers").length){
+				//var container = $('.blog-listing');
+				var pg_num = 2;
+				var num_of_pg = $("ul.page-numbers").children().length;
+				$('#more_posts').on('click', function() { 
+					var page  = window.location.href;  
+					var inc_pg_num = pg_num++;
+					if(inc_pg_num <= num_of_pg) {
+						var url   =   page+'page/'+inc_pg_num+'/';
+						
+						$.ajax({
+							url: url ,
+							type: 'post',
+							beforeSend: function(){
+							$('.loader_product').css({"display":"block"}); 
+							},
+							success: function(data){
+							$('.blog-listing').hide("slide", { direction: "left" }, 400).html($(data).find('.blog-listing').html()).show("slide", { direction: "right" }, 400);
+							/*$('.blog-listing').append($(data).find('.blog-listing').html());
+								alert($(data).find('.blog-listing').html()); */
+								$('.loader_product').css({"display":"none"}); 
+							},
+							complete: function(){
 
+							}
+						});
+					}   
+					else{
+					$('#more_posts').hide();
+					$('.no_more').show(); 
+					} 
+				});
+			}
+
+			else{
+			$('#more_posts').hide();
+			}
+		
+		</script>
 	</body>
 
 </html>

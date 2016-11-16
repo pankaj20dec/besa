@@ -126,6 +126,7 @@ function wp_bootstrap_footer_links_fallback() {
 
 // Shortcodes
 require_once('library/shortcodes.php');
+require get_template_directory() . '/inc/template-tags.php';
 
 // Admin Functions (commented out by default)
 // require_once('library/admin.php');         // custom admin functions
@@ -150,6 +151,7 @@ add_image_size( 'wpbs-featured-home', 1079, 479, true);
 add_image_size( 'wpbs-featured-carousel', 970, 400, true);
 add_image_size( 'portfolio-thumbnail', 355, 233, true);
 add_image_size( 'portfolio-large', 1100, 725, true);
+add_image_size( 'post-img-archive', 646, 406, true);
 
 /* 
 to add more sizes, simply copy a line from above 
@@ -906,5 +908,91 @@ function custom_post_type_testimonial() {
 */
 
 add_action( 'init', 'custom_post_type_testimonial', 0 );
+
+// numbered pagination
+function pagination($pages = '', $range = 4)
+{  
+     $showitems = ($range * 2)+1;  
+ 
+     global $paged;
+     if(empty($paged)) $paged = 1;
+ 
+     if($pages == '')
+     {
+         global $wp_query;
+         $pages = $wp_query->max_num_pages;
+         if(!$pages)
+         {
+             $pages = 1;
+         }
+     }   
+ 
+     if(1 != $pages)
+     {
+         echo "<div class=\"pagination\"><ul class=\"page-numbers\">";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; First</a>";
+         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo; Previous</a>";
+ 
+         for ($i=1; $i <= $pages; $i++)
+         {
+             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+             {
+                 echo ($paged == $i)? "<li class=\"current\">".$i."</li>":"<li><a href='".get_pagenum_link($i)."' class=\"inactive\">".$i."</a> </li>";
+             }
+         }
+		
+         if ($paged < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($paged + 1)."\">Next &rsaquo;</a>";  
+         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>Last &raquo;</a>";
+         echo "</ul></div>\n";
+     }
+}
+
+/************ Social Share Buttons ***************************/
+function social_sharing_buttons() {
+    global $post;
+    if(is_singular() && get_post_type() == "post"){  
+        // Get current page URL 
+        $current_page_url = urlencode(get_permalink());
+ 
+        // Get current page title
+        $current_page_title = str_replace( ' ', '%20', get_the_title());
+        
+        // Get Post Thumbnail for pinterest
+        $current_page_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+ 
+        // Construct sharing URL without using any script
+        $twitterURL = 'https://twitter.com/intent/tweet?text='.$current_page_title.'&amp;url='.$current_page_url.'&amp;via=smoke';
+        $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$current_page_url;
+        $googleURL = 'https://plus.google.com/share?url='.$current_page_url;
+        $bufferURL = 'https://bufferapp.com/add?url='.$current_page_url.'&amp;text='.$current_page_title;
+        $whatsappURL = 'whatsapp://send?text='.$current_page_title . ' ' . $current_page_url;
+        $linkedInURL = 'https://www.linkedin.com/shareArticle?mini=true&url='.$current_page_url.'&amp;title='.$current_page_title;
+ 
+        $pinterestURL = 'https://pinterest.com/pin/create/button/?url='.$current_page_url.'&amp;media='.$current_page_thumbnail[0].'&amp;description='.$current_page_title;
+ 
+        // Add sharing button at the end of page/page content
+		$content  = "";
+		$content .= '<div class="share-links">';
+		$content .= '<span>SHARE</span>';
+        $content .= '<ul class="share-social-icons">';
+        $content .= '<li><a href="'.$facebookURL.'" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>';
+        $content .= '<li><a href="'.$pinterestURL.'" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>';
+        $content .= '<li><a href="'.$twitterURL.'" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>';
+        $content .= '</ul>';
+        $content .= '</div>';
+      
+        echo $content;
+    }
+};
+/************ Social Share Buttons ends***************************/
+function skandi_move_comment_field_to_bottom( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+
+add_filter( 'comment_form_fields', 'skandi_move_comment_field_to_bottom' );
+
 
 ?>

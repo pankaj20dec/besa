@@ -85,60 +85,6 @@ Template Name: Homepage
 														</li>												
 													<?php endwhile; endif;
 													wp_reset_query(); ?>
-												<!--<li class="gallery-item">
-													<div class="item-content">
-														<img src="http://localhost/besa/wp-content/uploads/2016/11/image-thumb2.jpg" alt="gallery-image">
-														<div class="item-description">
-															<h3>The Sea Cottage</h3>
-															<p>mornington peninsula</p>
-														</div>
-													</div>
-												</li>
-												<li class="gallery-item">
-													<div class="item-content">
-														<img src="http://localhost/besa/wp-content/uploads/2016/11/image-thumb2.jpg" alt="gallery-image">
-														<div class="item-description">
-															<h3>The Sea Cottage</h3>
-															<p>mornington peninsula</p>
-														</div>
-													</div>
-												</li>
-												<li class="gallery-item">
-													<div class="item-content">
-														<img src="http://localhost/besa/wp-content/uploads/2016/11/image-thumb2.jpg" alt="gallery-image">
-														<div class="item-description">
-															<h3>The Sea Cottage</h3>
-															<p>mornington peninsula</p>
-														</div>
-													</div>
-												</li>
-												<li class="gallery-item">
-													<div class="item-content">
-														<img src="http://localhost/besa/wp-content/uploads/2016/11/image-thumb2.jpg" alt="gallery-image">
-														<div class="item-description">
-															<h3>The Sea Cottage</h3>
-															<p>mornington peninsula</p>
-														</div>
-													</div>
-												</li>
-												<li class="gallery-item">
-													<div class="item-content">
-														<img src="http://localhost/besa/wp-content/uploads/2016/11/image-thumb2.jpg" alt="gallery-image">
-														<div class="item-description">
-															<h3>The Sea Cottage</h3>
-															<p>mornington peninsula</p>
-														</div>
-													</div>
-												</li>
-												<li class="gallery-item">
-													<div class="item-content">
-														<img src="http://localhost/besa/wp-content/uploads/2016/11/image-thumb2.jpg" alt="gallery-image">
-														<div class="item-description">
-															<h3>The Sea Cottage</h3>
-															<p>mornington peninsula</p>
-														</div>
-													</div>
-												</li> -->
 											</ul>
 										</div>
 									</div>
@@ -183,56 +129,89 @@ Template Name: Homepage
 									<div class="row clearfix">
 										<div class="col-md-6 centered">
 											<div class="blog-title-container">
-												<h2>Blog</h2>
+												<?php $triumph = new WP_Query("pagename=blog"); 
+												while($triumph->have_posts()) : $triumph->the_post();?>
+												<h2><?php the_title(); ?></h2>
 												<div class="blog-sub-content">
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+													<?php the_content(); ?>
 												</div>
+												<?php endwhile; ?>
 											</div>
 										</div>
 									</div>
-									<div class="blog-container odd">
-										<div class="row clearfix">
-											<div class="col-md-6">
-												<div class="blog-image">
-													<img src="<?php echo get_template_directory_uri();?>/images/blog-img.jpg" alt="Blog title" />
-													<div class="blog-details">
-														<h3 class="blog-date"> 20/09/16</h3>
-														<p>blog title goes here</p>
+									<div class="blog-listing">
+									<?php
+										$perPage = get_option( 'posts_per_page' );
+										$paged = ( get_query_var('page') ? get_query_var('page') : 1);
+										
+										$args = array(
+										'posts_per_page' => $perPage,
+										'orderby' => 'post_date',
+										'order' => 'DESC',
+										'post_type' => 'post',
+										'paged' => $paged ); 
+										$the_query = new WP_Query( $args); 
+
+										if ( $the_query->have_posts() ) :
+											$i 	= 1;
+											while ( $the_query->have_posts() ) : $the_query->the_post();
+												$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-img-archive' );
+												?>
+										<div class="blog-container <?php if($i%2 == 0){ echo "even";}else{ echo "odd";}?>">
+											<div class="row clearfix">
+												<div class="col-md-6">
+												<?php if($i%2 == 0){?>
+													<div class="blog-descripton">
+														<div class="blog-content">
+															<?php the_content();?>
+														</div>
+														<a href="<?php echo the_permalink();?>" target="_blank" class="link-button">Read More...</a>
 													</div>
+												<?php }else{?>
+													<div class="blog-image">
+														<img src="<?php echo $image[0];?>" alt="<?php the_title();?>" />
+														<div class="blog-details">
+															<h3 class="blog-date"> <?php echo get_the_date("d/m/y"); ?></h3>
+															<p><?php the_title();?></p>
+														</div>
+													</div>
+												<?php } ?>
 												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="blog-descripton">
-													<div class="blog-content">
-														<p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus </p>
+												<div class="col-md-6">
+													<?php if($i%2 == 0){?>
+													
+													<div class="blog-image">
+														<img src="<?php echo $image[0];?>" alt="<?php the_title();?>" />
+														<div class="blog-details">
+															<h3 class="blog-date"> <?php echo get_the_date("d/m/y"); ?></h3>
+															<p><?php the_title();?></p>
+														</div>
 													</div>
-													<a href="#" class="link-button">Read More...</a>
+												<?php }else{?>
+													<div class="blog-descripton">
+														<div class="blog-content">
+															<?php the_content();?>
+														</div>
+														<a href="<?php echo the_permalink();?>" target="_blank" class="link-button">Read More...</a>
+													</div>
+												<?php } ?>
 												</div>
 											</div>
 										</div>
+										<?php $i++; endwhile;
+											else:
+												?>
+												<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+												<?php
+											endif;
+											wp_reset_query();
+										?>
 									</div>
-									<div class="blog-container even">
-										<div class="row clearfix">
-											<div class="col-md-6">
-												<div class="blog-descripton">
-													<div class="blog-content">
-														<p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus </p>
-													</div>
-													<a href="#" class="link-button">Read More...</a>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="blog-image">
-													<img src="<?php echo get_template_directory_uri();?>/images/blog-img.jpg" alt="Blog title" />
-													<div class="blog-details">
-														<h3 class="blog-date"> 20/09/16</h3>
-														<p>blog title goes here</p>
-													</div>
-												</div>
-											</div>
-										</div>
+									<div class="more-posts">
+										<!--<i aria-hidden="true" style="display:none;" class="fa fa-spinner fa-spin loader_product"></i>-->
+										<a href="javascript:void(0);" id="more_posts" class="link-button">More posts >></a>
+										<span style="display:none;" class="no_more">no more posts</span>
 									</div>
-									<div class="more-posts"><a href="#" class="link-button">More posts >></a></div>
 								</div>
 							</div>
 							<div id="contact" class="scrollpage">
@@ -282,4 +261,8 @@ Template Name: Homepage
     
 			</div> <!-- end #content -->
 
-<?php get_footer(); ?>
+<?php 
+	if (function_exists("pagination")) {
+		pagination($the_query->max_num_pages);
+	} 
+get_footer(); ?>

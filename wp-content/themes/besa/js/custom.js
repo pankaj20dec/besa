@@ -31,6 +31,10 @@ var Blank ={
 $(document).ready(function(){
 	Blank.win_prop();
 	Blank.menu_scroll();
+	
+			
+		
+	
 });
  
 

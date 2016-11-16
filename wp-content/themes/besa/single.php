@@ -1,47 +1,54 @@
 <?php get_header(); ?>
-			
-			<div id="content" class="clearfix row">
-			
-				<div id="main" class="col-sm-8 clearfix" role="main">
-
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
+<div class="blog-detail-page">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-6 centered">
+				<div class="blog-title-container">
+					<?php $triumph = new WP_Query("pagename=blog"); 
+					while($triumph->have_posts()) : $triumph->the_post();?>
+					<h2><?php the_title(); ?></h2>
+					<div class="blog-sub-content">
+						<?php the_content(); ?>
+					</div>
+					<?php endwhile; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div id="content" class="row clearfix">
+			<div id="main" class="col-sm-10 centered" role="main">
+				<div class="single-container">
+				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>	
 					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-						
-						<header>
-						
+						<div class="featured-image">
 							<?php the_post_thumbnail( 'wpbs-featured' ); ?>
-							
-							<div class="page-header"><h1 class="single-title" itemprop="headline"><?php the_title(); ?></h1></div>
-							
-							<p class="meta"><?php _e("Posted", "wpbootstrap"); ?> <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php echo get_the_date('F jS, Y', '','', FALSE); ?></time> <?php _e("by", "wpbootstrap"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("filed under", "wpbootstrap"); ?> <?php the_category(', '); ?>.</p>
-						
-						</header> <!-- end article header -->
-					
-						<section class="post_content clearfix" itemprop="articleBody">
+							<div class="blog-details">
+								<h3 class="blog-date"> <?php echo get_the_date("d/m/y"); ?></h3>
+								<p><?php the_title();?></p>
+							</div>
+						</div>
+						<div class="post_content">
 							<?php the_content(); ?>
-							
+							<div class="post-info">
+								<?php twentysixteen_entry_meta2();?>
+								<ul class="single-tags">
+									<?php
+									$tags_list = get_the_tag_list('', _x('', 'Used between list items, there is a space after the comma.', 'skandi'));
+									if ($tags_list) {
+										printf('<li>%1$s</li>', $tags_list);
+									}?>
+								</ul>
+								<?php social_sharing_buttons();?>
+							</div>
 							<?php wp_link_pages(); ?>
-					
-						</section> <!-- end article section -->
-						
-						<footer>
-			
-							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Tags","wpbootstrap") . ':</span> ', ' ', '</p>'); ?>
-							
-							<?php 
-							// only show edit button if user has permission to edit posts
-							if( $user_level > 0 ) { 
-							?>
-							<a href="<?php echo get_edit_post_link(); ?>" class="btn btn-success edit-post"><i class="icon-pencil icon-white"></i> <?php _e("Edit post","wpbootstrap"); ?></a>
-							<?php } ?>
-							
-						</footer> <!-- end article footer -->
+						</div> 
+							<div class="back-to-blog"><a href="/" class="back-blog link-button"><< Back to Blog</a></div>
 					
 					</article> <!-- end article -->
-					
-					<?php comments_template('',true); ?>
-					
+					<div class="single-comment-form">
+						<?php comments_template('',true); ?>
+					</div>
 					<?php endwhile; ?>			
 					
 					<?php else : ?>
@@ -58,11 +65,9 @@
 					</article>
 					
 					<?php endif; ?>
-			
-				</div> <!-- end #main -->
-    
-				<?php get_sidebar(); // sidebar 1 ?>
-    
-			</div> <!-- end #content -->
-
+				</div>
+			</div>
+		</div> 
+	</div>
+</div>	
 <?php get_footer(); ?>

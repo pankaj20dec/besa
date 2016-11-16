@@ -27,9 +27,7 @@ The comments page for Bones
 	 	</ul>
 	</nav>
 	
-	<ol class="commentlist">
-		<?php wp_list_comments('type=comment&callback=wp_bootstrap_comments'); ?>
-	</ol>
+	
 	
 	<?php endif; ?>
 	
@@ -57,6 +55,22 @@ The comments page for Bones
 
 <?php if ( comments_open() ) : ?>
 
-	<?php comment_form(); ?>
-
+	<?php $comments_args = array(
+			// change the title of send button
+			'label_submit' => 'Submit',
+			// change the title of the reply section
+			'title_reply' => 'Leave Comment',
+			// remove "Text or HTML to be displayed after the set of comment fields"
+			// 'comment_notes_after' => '<p><small>Your comment may be subject to editorial review.</small></p>',
+			'fields' => apply_filters('comment_form_default_fields', array(
+				'author' => '<p class="comment-form-author">' . '<input id="author" class="form-control" placeholder="Name" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' required="required"/>' . ($req ? '<span style="color:red" class="required">*</span>' : '') . '</p>',
+				'email' => '<p class="comment-form-email">' . '<input id="email" class="form-control" placeholder="Email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' required="required" />' . ($req ? '<span style="color:red" class="required">*</span>' : '') . '</p>'
+			)) ,
+			// redefine your own textarea (the comment body)
+			'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="message" class="form-control" rows="6" cols="37" wrap="hard"></textarea></p>',
+		);
+		comment_form($comments_args);  ?>
+		<ol class="commentlist">
+		<?php wp_list_comments('type=comment&callback=wp_bootstrap_comments'); ?>
+	</ol>
 <?php endif; // if you delete this the sky will fall on your head ?>

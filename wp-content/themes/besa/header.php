@@ -15,7 +15,8 @@
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/fonts/stylesheet.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-		
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+		 
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->

@@ -75,7 +75,25 @@ p{margin:0 0 19px 0;}
 #main .jumbotron h1{font-size:30px; line-height:30px;font-family: 'bebas_neueregular'; max-width:635px; margin-top:-26px;}
 #main .jumbotron .page-header{margin:0 auto; max-width:1330px;border:0 none;padding:0 15px;}
 
-/*--scrollpage--*/
+h1{
+	margin-top:0;
+	font-family: 'bebas_neueregular';
+	font-size:50px; 
+	line-height:60px;
+	color:#000;
+	margin-bottom:20px;
+}
+h2{
+	margin-top:0;
+	font-family: 'bebas_neueregular';
+	font-size:30px; 
+	line-height:30px;
+	color:#000;
+	margin-bottom:26px;
+}
+.lead{
+	font-size: 16px;
+}
 .scrollpage h2{margin-top:0;font-family: 'bebas_neueregular';font-size:30px; line-height:30px;color:#000;margin-bottom:26px;}
 
 /*--mission--*/
@@ -99,13 +117,19 @@ p{margin:0 0 19px 0;}
 .portfolio-gallery .item-content:hover .item-description{transform:translateY(0);-webkit-transform:translateY(0);transition:0.2s linear;-webkit-transition:0.2s linear;}
 
 /*--get a quote--*/
-::-webkit-input-placeholder {opacity:1;}
+::-webkit-input-placeholder {opacity:1; color: #000;}
 :-moz-placeholder { /* Firefox 18- */
-   opacity:1;}
+   opacity:1;
+	color: #000;
+   }
 ::-moz-placeholder {  /* Firefox 19+ */
-   opacity:1;}
+   opacity:1;
+   color: #000;
+   }
 :-ms-input-placeholder {  
-   opacity:1;}
+   opacity:1;
+   color: #000;
+   }
 #get-a-quote,#contact{clear:both;padding:34px 0 34px 0; overflow:hidden;}  
 #get-a-quote .body-text,#contact .body-text{padding-left:8.82%;padding-right:8.82%;}
 #get-a-quote .body-text > p, #contact .body-text > p{padding-left:8.82%;padding-right:8.82%;margin-bottom: 25px;}
@@ -137,6 +161,9 @@ span.wpcf7-not-valid-tip {position: absolute; bottom: 0; transform: translateY(1
 	font-size:13px;
 }
 /********** Blog section ********/
+.no-pads{
+	padding: 0;
+}
 .link-button{
 	font-family: "bebas_neueregular";
 	font-size: 16px;
@@ -156,7 +183,7 @@ span.wpcf7-not-valid-tip {position: absolute; bottom: 0; transform: translateY(1
 }
 .blog-title-container{
 	background: #ffffff;
-	padding: 30px 100px;
+	padding: 30px 95px;
 	margin-bottom: 16px;
 }
 .blog-title-container h2{
@@ -177,7 +204,7 @@ span.wpcf7-not-valid-tip {position: absolute; bottom: 0; transform: translateY(1
 	transform: translateY(200%);
 	transition: all 0.2s linear 0s;
 }
-.blog-image .blog-details h3,.lb-caption > h3{
+.blog-details h3,.lb-caption > h3{
 	font-family: "bebas_neueregular";
 	font-size: 18px;
 	margin: 0 0 5px 0;
@@ -235,6 +262,148 @@ span.wpcf7-not-valid-tip {position: absolute; bottom: 0; transform: translateY(1
 }
 .lb-caption > p{
 	margin: 10px 0 5px;
+}
+.blog-detail-page {
+    padding-top: 34px;
+}
+.pagination{
+	display: none;
+}
+
+/*****************  Blog single page *****************/
+.single .blog-sub-content p{
+	font-size: 13px;
+}
+.single-container{
+	padding: 0 52px;
+	margin-top: 22px;
+}
+.featured-image{
+	position: relative;
+}
+.featured-image .blog-details {
+    background: #fff none repeat scroll 0 0;
+    padding: 10px;
+    position: absolute;
+    top: 42px;
+	width: 35%;
+}
+.featured-image .blog-details p{
+	margin-bottom: 0;
+}
+.post_content {
+    background: #fff none repeat scroll 0 0;
+    margin: 50px 0;
+    padding: 40px 60px;
+}
+
+.post_content p{
+	font-size: 16px;
+	line-height: 30px;
+	letter-spacing: 0.1em;
+}
+.post-info {
+    font-size: 16px;
+    text-transform: uppercase;
+	text-align: center;
+}
+
+.post-info span {
+	padding: 0 14px;
+	position: relative;
+}
+.post-info span:after{
+	content: "/";
+	padding-left: 13px;
+	position: absolute;
+}
+.post-info span a{
+	color: #717171;
+}
+.post-info > ul {
+    display: inline-block;
+    padding: 0 0 0 5px;
+}
+.post-info > ul li a{
+	text-transform: lowercase;
+	padding: 0 5px;
+	color: #717171;
+}
+.post-info > ul li a:after{
+	content:",";
+	position: absolute;
+}
+.post-info .share-links span:after{
+	content: "";
+}
+.post-info .share-social-icons{
+	display: inline-block;
+	padding: 0;
+	margin-top: 20px;
+}
+.post-info .share-social-icons li{
+	display: inline-block;
+	margin: 0 5px;
+}
+.back-to-blog{
+	text-align: center;
+}
+.back-to-blog .back-blog{
+	margin-top: 0;
+}
+.single-comment-form{
+	background: #fff;
+	padding: 60px;
+	margin: 35px 0; 
+}
+#reply-title{
+	font-family: 'bebas_neueregular';
+	font-size: 30px;
+	line-height: 30px;
+	letter-spacing: 0.1em;	
+	margin: -80px 0 0 0;
+}
+.comment-notes,.required{
+	display: none;
+}
+.comment-form {
+    margin: 0 auto;
+    max-width: 540px;
+	padding: 42px 0 0 0;
+}
+.comment-form-author input, .comment-form-email input, .comment-form-url input, .comment-form-comment input, .comment-form-author textarea, .comment-form-email textarea, .comment-form-url textarea, .comment-form-comment textarea{
+	box-shadow: none;
+	border-radius: 0;
+	border: none;
+	background: #e1e1e1;
+	font-family: 'bebas_neueregular';
+	color: #000;
+	letter-spacing: 0.1em;
+}
+.comment-form-author input:focus, .comment-form-email input:focus, .comment-form-url input:focus, .comment-form-comment input:focus, .comment-form-author textarea:focus, .comment-form-email textarea:focus, .comment-form-url textarea:focus, .comment-form-comment textarea:focus{
+	box-shadow: none;
+	border: none;
+}
+.form-submit input[type="submit"]{
+	background: #000;
+	color: #fff;
+	border-radius: 0;
+	border: 0;
+}
+.form-submit input[type="submit"]:hover{
+	background: #e1e1e1;
+	color: #000;
+}
+.comment-form-author, .comment-form-email, .comment-form-url, .comment-form-comment {
+    margin-bottom: 10px;
+}
+.comment-form-author input::-moz-placeholder, .comment-form-email input::-moz-placeholder, .comment-form-url input::-moz-placeholder, .comment-form-comment input::-moz-placeholder, .comment-form-author textarea::-moz-placeholder, .comment-form-email textarea::-moz-placeholder, .comment-form-url textarea::-moz-placeholder, .comment-form-comment textarea::-moz-placeholder{
+	color: #000;
+	font-family: 'bebas_neueregular';
+	letter-spacing: 0.1em;
+}
+.single-comment-form > h3#comments {
+    display: none;
 }
 
 /************** Footer *************/
@@ -297,6 +466,7 @@ span.wpcf7-not-valid-tip {position: absolute; bottom: 0; transform: translateY(1
 .credits .copyright{
 	padding-right: 20px; 
 }
+
 
 @media screen and (max-width: 1329px) {
 	#main .jumbotron img,.portfolio-container,.testimonial-container{max-width:81.127%;}
