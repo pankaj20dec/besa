@@ -54,7 +54,7 @@ The comments page for Bones
 
 
 <?php if ( comments_open() ) : ?>
-
+	<div class="single-comment-form">
 	<?php $comments_args = array(
 			// change the title of send button
 			'label_submit' => 'Submit',
@@ -70,7 +70,8 @@ The comments page for Bones
 			'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="message" class="form-control" rows="6" cols="37" wrap="hard"></textarea></p>',
 		);
 		comment_form($comments_args);  ?>
+	</div>	
 		<ol class="commentlist">
-		<?php wp_list_comments('type=comment&callback=wp_bootstrap_comments'); ?>
+		<?php wp_list_comments(); ?>
 	</ol>
 <?php endif; // if you delete this the sky will fall on your head ?>

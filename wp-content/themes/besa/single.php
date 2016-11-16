@@ -28,7 +28,7 @@
 								<p><?php the_title();?></p>
 							</div>
 						</div>
-						<div class="post_content">
+						<div class="single-post_content">
 							<?php the_content(); ?>
 							<div class="post-info">
 								<?php twentysixteen_entry_meta2();?>
@@ -46,9 +46,9 @@
 							<div class="back-to-blog"><a href="/" class="back-blog link-button"><< Back to Blog</a></div>
 					
 					</article> <!-- end article -->
-					<div class="single-comment-form">
+					
 						<?php comments_template('',true); ?>
-					</div>
+					
 					<?php endwhile; ?>			
 					
 					<?php else : ?>
